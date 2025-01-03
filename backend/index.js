@@ -1,13 +1,25 @@
-import express from 'express'
+const express = require('express')
+const socketio = require('socket.io')
+const http = require('http')
+
+const PORT = process.env.PORT || 8080
+
+const router = require('./router')
 
 const app = express()
+const server = http.createServer(app)
+const io = socketio(server)
 
-app.get('/', (req, res) => {
-    res.send("Hello")
-    console.log("Hello world")
+io.on('connection', (socket) => {
+    console.log('We have a new connection!!!')
+
+        socket.on('disconnect', () => {
+            console.log('User had left!!!')
+        })
 })
 
-const PORT = 8080
-app.listen(PORT, () => {
+app.use(router)
+
+server.listen(PORT, () => {
     console.log(`server is listening on http://localhost:${PORT}`)
 })
