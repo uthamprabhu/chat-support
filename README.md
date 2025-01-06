@@ -37,33 +37,40 @@ A real-time chat application using modern technologies, fully deployed on **Netl
 ### Steps
 
 #### 1. Clone the Repository
-bash
+```bash
 git clone <repository-url>
 cd <repository-folder>
+```
 #### 2. Start the Backend
 
 1. Navigate to the backend folder (if applicable):
-bash
+```bash
 cd backend
+```
 2. Install dependencies:
-bash
+```bash
 npm install
+```
 3. Start the server:
-bash
+```bash
 npm start
+```
 The backend will run at `http://localhost:8080` by default.
 
 #### 3. Start the Frontend
 
 1. Navigate to the frontend folder (if applicable):
-bash
+```bash
 cd frontend
+```
 2. Install dependencies:
-bash
+```bash
 npm install
+```
 3. Start the React development server:
-bash
+```bash
 npm start
+```
 The frontend will run at `http://localhost:3000` by default.
 
 4. Ensure the frontend points to the correct backend URL:
@@ -83,8 +90,9 @@ The frontend will run at `http://localhost:3000` by default.
 
 ### Deploying the Frontend on Netlify
 1. Build the React app:
-bash
+```bash
    npm run build
+```
    
 2. Drag and drop the `build` folder onto the Netlify dashboard or use the Netlify CLI.
 
@@ -92,16 +100,19 @@ bash
 
 ### Deploying the Backend on Heroku
 1. Log in to Heroku:
-bash
+```bash
    heroku login
+```
    
 2. Create a Heroku app:
-bash
+```bash
    heroku create
+```
    
 3. Deploy the app:
-bash
+```bash
    git push heroku main
+```
    
 4. Ensure the backend has proper CORS configuration to allow requests from the Netlify frontend.
 
