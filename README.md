@@ -4,9 +4,8 @@ A real-time chat application using modern technologies, fully deployed on **Netl
 
 ## Deployed Links
 
-- **Frontend**: [Netlify Deployed Site](https://splendid-monstera-31993e.netlify.app){:target="_blank" rel="noopener noreferrer"}
-- **Backend**: [Heroku Deployed API](https://react-chat-app-d13acb806081.herokuapp.com){:target="_blank" rel="noopener noreferrer"}
-
+- **Frontend**: <a href="https://splendid-monstera-31993e.netlify.app" target="_blank" rel="noopener noreferrer">Netlify Deployed Site</a>
+- **Backend**: <a href="https://react-chat-app-d13acb806081.herokuapp.com" target="_blank" rel="noopener noreferrer">Heroku Deployed API</a>
 
 ---
 
