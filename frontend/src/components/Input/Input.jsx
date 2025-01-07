@@ -1,7 +1,7 @@
 import React from 'react'
 import './Input.css'
 
-const Input = ({ message, setMessage, sendMessage, handleTyping }) => {
+const Input = ({ message, setTyping, sendMessage, handleTyping }) => {
   return (
     <form onSubmit={(event) => event.preventDefault()}>
       <input
@@ -16,7 +16,9 @@ const Input = ({ message, setMessage, sendMessage, handleTyping }) => {
       <button
         type="submit"
         className='sendButton'
-        onClick={(event) => sendMessage(event)}
+        onClick={(event) => 
+          sendMessage(event)
+        }
       >
         Send
       </button>

@@ -27,11 +27,16 @@ io.on('connection', (socket) => {
   console.log('New connection!');
 
   socket.on('join', async ({ name, room }, callback) => {
+    const sessionToken = crypto.randomBytes(16).toString('hex')
     const { error, user } = addUser({ id: socket.id, name, room });
 
     if (error) return callback(error);
 
     socket.join(user.room);
+
+    socket.emit('sessionToken', { sessionToken })
+
+    console.log('sessionToken:', sessionToken)
 
     const messages = await Message.find({ room: user.room }).sort({ timestamp: 1 });
 
@@ -50,13 +55,13 @@ io.on('connection', (socket) => {
       text: `${user.name}, welcome to the room ${user.room}.`,
       timestamp: new Date().toISOString(),
     });
-    
+
     socket.broadcast.to(user.room).emit('message', {
       user: 'admin',
       text: `${user.name} has joined!`,
       timestamp: new Date().toISOString(),
     });
-    
+
 
     io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) })
 
@@ -75,12 +80,18 @@ io.on('connection', (socket) => {
         user: user.name,
         room: user.room,
         message,
+        timestamp: new Date()
       })
 
-      await chatMessage.save();
+      const savedMessage = await chatMessage.save();
 
-      io.to(user.room).emit('message', { user: user.name, text: message });
-      io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+      io.to(user.room).emit('message', { 
+        user: savedMessage.user, 
+        text: savedMessage.message,
+        timestamp: savedMessage.timestamp
+      })
+
+      io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) })
 
       callback()
     } catch (error) {

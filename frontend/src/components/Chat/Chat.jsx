@@ -61,16 +61,29 @@ const Chat = () => {
 
   const handleTyping = (event) => {
     const inputMessage = event.target.value;
-    setMessage(inputMessage);  // Update message state
-
+    setMessage(inputMessage); // Update message state
+  
     if (socket) {
-      if (inputMessage) {
-        socket.emit('typing', { room });
+      if (inputMessage.trim() !== '') {
+        socket.emit('typing', { room, user: name });
       } else {
         socket.emit('stopTyping', { room });
+        setTyping(''); // Clear typing indicator locally
       }
     }
   };
+  
+  const sendMessage = (event) => {
+    event.preventDefault();
+  
+    if (message.trim() !== '') {
+      socket.emit('sendMessage', message, () => {
+        setMessage(''); // Clear message input
+        socket.emit('stopTyping', { room }); // Notify the server that the user has stopped typing
+        setTyping(''); // Clear typing indicator locally
+      });
+    }
+  };  
 
   useEffect(() => {
     socket.on('typing', ({ user }) => {
@@ -82,13 +95,11 @@ const Chat = () => {
     });
   }, []);
 
-  const sendMessage = (event) => {
-    event.preventDefault();
-
-    if (message) {
-      socket.emit('sendMessage', message, () => setMessage(''));
-    }
-  };
+  useEffect(() => {
+    socket.on('sessionToken', ({ sessionToken }) => {
+      localStorage.setItem('sessionToken', sessionToken);
+    });
+  }, []);
 
   return (
     <div className="outerContainer">
@@ -101,6 +112,7 @@ const Chat = () => {
           setMessage={setMessage}
           sendMessage={sendMessage}
           handleTyping={handleTyping}
+          setTyping={setTyping}
         />
       </div>
       <TextContainer users={users} />
