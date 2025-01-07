@@ -16,6 +16,14 @@
     width: 35%;
 }
 
+.typingIndicator {
+    font-size: 14px;
+    color: #666;
+    margin-left: 10px;
+    margin-top: -10px;
+    font-style: italic;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
     .outerContainer {
         height: 100%;

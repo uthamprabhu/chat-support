@@ -14,9 +14,10 @@ let socket;
 const Chat = () => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
-  const [users, setUsers] = useState('')
+  const [users, setUsers] = useState([])
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [typing, setTyping] = useState('')
   const ENDPOINT = 'http://localhost:8080';
 
   const location = useLocation();
@@ -39,7 +40,7 @@ const Chat = () => {
       socket.disconnect();
       socket.off();
     };
-  }, [ENDPOINT, location.search]);
+  }, [ENDPOINT, location.search])
 
   useEffect(() => {
     socket.on('message', (message) => {
@@ -49,6 +50,36 @@ const Chat = () => {
     socket.on('roomData', ({ users }) => {
       setUsers(users)
     })
+  }, [])
+
+  useEffect(() => {
+    socket.on('chatHistory', (messages) => {
+      console.log(messages);  // Log messages to verify they are correctly received
+      setMessages(messages);
+    });
+  }, []);
+
+  const handleTyping = (event) => {
+    const inputMessage = event.target.value;
+    setMessage(inputMessage);  // Update message state
+
+    if (socket) {
+      if (inputMessage) {
+        socket.emit('typing', { room });
+      } else {
+        socket.emit('stopTyping', { room });
+      }
+    }
+  };
+
+  useEffect(() => {
+    socket.on('typing', ({ user }) => {
+      setTyping(`${user} is typing...`);
+    });
+
+    socket.on('stopTyping', () => {
+      setTyping('');
+    });
   }, []);
 
   const sendMessage = (event) => {
@@ -64,7 +95,13 @@ const Chat = () => {
       <div className="container">
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
-        <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+        {typing && <p className='typingIndicator'>{typing}</p>}
+        <Input
+          message={message}
+          setMessage={setMessage}
+          sendMessage={sendMessage}
+          handleTyping={handleTyping}
+        />
       </div>
       <TextContainer users={users} />
     </div>
