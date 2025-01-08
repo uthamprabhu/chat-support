@@ -49,6 +49,7 @@ const Chat = () => {
 
     socket.on('roomData', ({ users }) => {
       setUsers(users)
+      localStorage.setItem('roomData', JSON.stringify(users));
     })
   }, [])
 
@@ -62,7 +63,7 @@ const Chat = () => {
   const handleTyping = (event) => {
     const inputMessage = event.target.value;
     setMessage(inputMessage); // Update message state
-  
+
     if (socket) {
       if (inputMessage.trim() !== '') {
         socket.emit('typing', { room, user: name });
@@ -72,10 +73,10 @@ const Chat = () => {
       }
     }
   };
-  
+
   const sendMessage = (event) => {
     event.preventDefault();
-  
+
     if (message.trim() !== '') {
       socket.emit('sendMessage', message, () => {
         setMessage(''); // Clear message input
@@ -83,7 +84,7 @@ const Chat = () => {
         setTyping(''); // Clear typing indicator locally
       });
     }
-  };  
+  };
 
   useEffect(() => {
     socket.on('typing', ({ user }) => {
