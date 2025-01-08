@@ -116,7 +116,7 @@ const Chat = () => {
           setTyping={setTyping}
         />
       </div>
-      <TextContainer users={users} />
+      {/* <TextContainer users={users} /> */}
     </div>
   );
 };

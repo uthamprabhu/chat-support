@@ -3,7 +3,10 @@ import './Input.css'
 
 const Input = ({ message, setTyping, sendMessage, handleTyping }) => {
   return (
-    <form onSubmit={(event) => event.preventDefault()}>
+    <form
+      className='form'
+      onSubmit={(event) => event.preventDefault()}
+    >
       <input
         className='input'
         type="text"
@@ -16,7 +19,7 @@ const Input = ({ message, setTyping, sendMessage, handleTyping }) => {
       <button
         type="submit"
         className='sendButton'
-        onClick={(event) => 
+        onClick={(event) =>
           sendMessage(event)
         }
       >

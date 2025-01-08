@@ -110,12 +110,12 @@ body {
 }
 
 .infoText {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #555;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
 }
 
 .infoText .green {
-    color: green;
-    font-weight: bold;
+  color: green;
+  font-weight: bold;
 }

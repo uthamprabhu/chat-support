@@ -5,6 +5,8 @@
     color: white;
     display: inline-block;
     max-width: 80%;
+    position: relative;
+    /* Added to position timestamp inside the message box */
 }
 
 .messageText {
@@ -32,6 +34,8 @@
     font-family: Helvetica;
     color: #828282;
     letter-spacing: 0.3px;
+    margin-bottom: 5px;
+    /* Added to add space between name and message */
 }
 
 .pl-10 {
@@ -64,4 +68,14 @@
 
 .backgroundLight {
     background: #F3F3F3;
+}
+
+.messageTimestamp {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.8em;
+    color: #828282;
+    margin-bottom: 5px;
+    /* Space between message and timestamp */
 }
