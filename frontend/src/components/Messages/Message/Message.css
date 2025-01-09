@@ -1,7 +1,7 @@
 .messageBox {
     background: #F3F3F3;
     border-radius: 20px;
-    padding: 5px 20px;
+    padding: 5px 20px 0 15px;
     color: white;
     display: inline-block;
     max-width: 80%;
@@ -15,6 +15,8 @@
     float: left;
     font-size: 1.1em;
     word-wrap: break-word;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 .messageText img {
@@ -34,12 +36,7 @@
     font-family: Helvetica;
     color: #828282;
     letter-spacing: 0.3px;
-    margin-bottom: 5px;
-    /* Added to add space between name and message */
-}
-
-.pl-10 {
-    padding-left: 10px;
+    margin-bottom: 0px;
 }
 
 .pr-10 {
@@ -72,8 +69,8 @@
 
 .messageTimestamp {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 2px;
+    right: 10px;
     font-size: 0.8em;
     color: #828282;
     margin-bottom: 5px;

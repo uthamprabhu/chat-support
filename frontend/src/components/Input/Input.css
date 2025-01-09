@@ -11,7 +11,7 @@
 .input {
     border: none;
     border-radius: 0;
-    padding: 15px 0 15px 10px;
+    padding: 20px 0 20px 15px;
     width: 70%;
     font-size: 1.2em;
 }
@@ -28,9 +28,9 @@ select:focus {
     cursor: pointer;
     text-decoration: none;
     background: #2979FF;
-    padding: 13px;
+    padding: 8px;
     display: inline-block;
     border: none;
     border-radius: 50px;
-    margin-right: 8px;
+    margin-right: 7px;
 }
