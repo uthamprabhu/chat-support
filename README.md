@@ -9,6 +9,13 @@ A real-time chat application using modern technologies, fully deployed on **Netl
 
 ---
 
+## Screenshot
+
+![Login Page](.frontend/src/assets/screenshots/login-page.png)
+![Live Chatting Page](.frontend/src/assets/screenshots/live-chatting-page.png)
+
+---
+
 ## Technologies Used
 
 ### Frontend
