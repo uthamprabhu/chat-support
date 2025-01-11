@@ -13,7 +13,7 @@ A real-time chat application using modern technologies, fully deployed on **Netl
 
 <img src="./frontend/src/assets/screenshots/login-page.png" alt="Login Page" width="300" height="400">
 
-<img src="./frontend/src/assets/screenshots/live-chatting-page.png" alt="Live Chatting Page" width="500" height="400">
+<img src="./frontend/src/assets/screenshots/live-chatting-page.png" alt="Live Chatting Page" width="700" height="400">
 
 ---
 
