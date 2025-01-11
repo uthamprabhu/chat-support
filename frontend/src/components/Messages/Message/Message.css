@@ -37,6 +37,7 @@
     color: #828282;
     letter-spacing: 0.3px;
     margin-bottom: 0px;
+    text-transform: capitalize;
 }
 
 .pr-10 {
@@ -60,7 +61,7 @@
 }
 
 .backgroundBlue {
-    background: #2979FF;
+    background: #528bee;
 }
 
 .backgroundLight {
@@ -75,4 +76,8 @@
     color: #828282;
     margin-bottom: 5px;
     /* Space between message and timestamp */
+}
+
+.nameAndTime{
+    color: rgb(28, 20, 169);
 }

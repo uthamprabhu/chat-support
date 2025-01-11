@@ -35,9 +35,9 @@ const Message = ({ message: { user, text, timestamp }, name }) => {
     isSentByCurrentUser ? (
       <div className='messageContainer justifyEnd'>
         <div className='messageBox backgroundBlue'>
-          <p className='sentText pr-10'>{trimmedName}</p>
+          <p className='sentText pr-10 nameAndTime'>{trimmedName}</p>
           <p className='messageText colorWhite'>{text}</p>
-          <p className="messageTimestamp">{formattedTimestamp}</p>
+          <p className="messageTimestamp nameAndTime">{formattedTimestamp}</p>
         </div>
       </div>
     ) : (

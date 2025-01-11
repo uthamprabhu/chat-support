@@ -84,7 +84,8 @@ export default function SignIn() {
         </div>
         <div className="infoText">
           <p>
-            <strong>Note:</strong> Active rooms are highlighted in <span className="green">green</span>.
+            <strong>Note for Customer Service Representative:</strong> 
+            <br />Active rooms are highlighted in <span className="green">green</span>.
             Please use your name and the active room to join and assist users in real time.
           </p>
         </div>

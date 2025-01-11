@@ -12,6 +12,9 @@ const server = http.createServer(app);
 const Message = require('./models/message');
 const connectToDB = require('./config/db');
 
+const router = require('./router')
+app.use(router)
+
 connectToDB();
 
 app.use(cors());
@@ -56,13 +59,13 @@ io.on('connection', (socket) => {
     socket.emit('chatHistory', formattedMessages);
 
     socket.emit('message', {
-      user: 'admin',
+      user: 'chat support',
       text: `${user.name}, welcome to the room ${user.room}.`,
       timestamp: new Date().toISOString(),
     });
 
     socket.broadcast.to(user.room).emit('message', {
-      user: 'admin',
+      user: 'chat support',
       text: `${user.name} has joined!`,
       timestamp: new Date().toISOString(),
     });
@@ -124,7 +127,7 @@ io.on('connection', (socket) => {
 
     if (user) {
       io.to(user.room).emit('message', {
-        user: 'admin',
+        user: 'chat support',
         text: `${user.name} has left.`,
       });
 
